@@ -152,3 +152,88 @@ ul{
     }
 }
 }
+.main{
+    position: relative;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    &__container{
+     max-width: 1000px;
+     margin: 0 auto;
+     padding: 0 1rem;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap:1rem;
+    
+    }
+    .logo{
+        img{
+            width: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+     
+    }
+    .search{
+        display: flex;
+        align-items: center;
+        flex: 1;
+        background-color: #eeeeeebc;
+        height: 40px;
+        border-radius: 10px;
+        padding-left: 15px;
+        
+        input{
+            width: 100%;
+            height: 100%;
+            background:transparent;
+            border: none;
+            outline: none;
+        }
+        &__icon{
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            background-color: $primary;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+            svg{
+                width: 21px;
+                height: 21px;
+                fill: $gray_white;
+            }
+        }
+
+    }
+    .cart{
+        position: relative;
+        svg{
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            fill: #666;
+            &:hover{
+                fill: $primary;
+            }
+        }
+        span{
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            background-color: $primary;
+            width: 23px;
+            height: 23px;
+            border-radius: 50%;
+            color: $gray_white;
+            display: grid;
+            place-items: center;
+            font-weight: 600;
+
+        }
+    }
+}
