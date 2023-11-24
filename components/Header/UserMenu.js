@@ -1,24 +1,26 @@
 import Link from 'next/link'
 import React from 'react'
 import Styles from "./styles.module.scss"
-const UserMenu = ({loggedIn}) => {
+import {signIn,signOut} from 'next-auth/react'
+const UserMenu = ({session}) => {
+    
   return (
     <div className={Styles.menu}>
         <h1>Welcome to Shoppy !</h1>
-        {loggedIn ? 
+        {session ? 
             <div className={Styles.flex}>
-                <img className={Styles.menu__img} src='https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image-378x279.png' alt=''/>
+                <img className={Styles.menu__img} src={session.user.image} alt=''/>
                 <div className={Styles.col}>
                     <span>Welcome back,</span>
-                    <h3>Habib</h3>
-                   <span>Sign out</span>
+                    <h3>{session.user.name}</h3>
+                   <span onClick={()=>signOut()}>Sign out</span>
                     
                 </div>
             </div> 
                 : 
             <div className={Styles.flex}>
                     <button className={Styles.btn_primary}>Register</button>
-                    <button className={Styles.btn_outline}>Signin</button>
+                    <button className={Styles.btn_outline} onClick={()=>signIn()}>Signin</button>
             </div>
         }
         <ul>

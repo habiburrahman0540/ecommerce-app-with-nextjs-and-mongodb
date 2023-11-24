@@ -14,7 +14,7 @@ export const dbConnection =async()=>{
             }
             await mongoose.disconnect();
         }
-        const dbConnect = await mongoose.connect(process.env.MONGO_DB,{
+        const dbConnect = await mongoose.connect(process.env.MONGODB_URL,{
             useNewUrlParser: true,
             useUnifiedTopology: true
         });

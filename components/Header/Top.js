@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import Styles from "./styles.module.scss"
 import {MdSecurity} from "react-icons/md"
 import {BsSuitHeart} from "react-icons/bs"
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import {RiAccountPinCircleLine,RiArrowDropDownFill} from "react-icons/ri"
 import UserMenu from './UserMenu'
 const Top = () => {
-    const [loggedIn,setLoggedIn] = useState(true);
+    const {data:session} = useSession();
     const [visiable,setVisiable] = useState(false);
   return (
     <div className={Styles.top}>
@@ -34,11 +35,11 @@ const Top = () => {
                 </li>
                 <li className={Styles.top__list__item} onMouseOver={()=>setVisiable(true)} onMouseLeave={()=>setVisiable(false)}>
                 {
-                loggedIn ?     
+                session ?     
                     <li className={Styles.top__list__item}>
                         <div className={Styles.flex}>
-                           <img src='https://www.pngarts.com/files/5/User-Avatar-PNG-Transparent-Image-378x279.png' alt=''/>
-                            <span>Habibur</span>
+                           <img src={session.user.image} alt=''/>
+                            <span>{session.user.name}</span>
                             <RiArrowDropDownFill/>
                         </div>
                     </li> 
@@ -52,7 +53,7 @@ const Top = () => {
                     </li> 
                 }
                 {
-                    visiable ? <UserMenu loggedIn={loggedIn}/> :""
+                    visiable ? <UserMenu session={session}/> :""
                 }
                     
                 </li>
